@@ -1,0 +1,53 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title">Container List</h5>
+        </div>
+
+        <ejs-grid #grid (actionBegin)="actionBegin($event)" gridLines='Both' (actionComplete)="actionComplete($event)"
+          [toolbar]='toolbarOptions' [dataSource]='data' allowPaging='true' [allowSorting]='true' allowResizing='true'
+          showColumnMenu='true' [allowExcelExport]='true' allowFiltering='true' [filterSettings]='filterSettings'
+          [pageSettings]='pageSettings' [showColumnChooser]= 'true' (toolbarClick)='toolbarClick($event)' [editSettings]='editSettings'>
+          <e-columns>
+            <e-column field='id' headerText='#' width='70' textAlign='Center' isPrimaryKey='true'>
+              <ng-template #template let-data>
+                {{NO(data.index)}}
+              </ng-template>
+            </e-column>
+
+              <e-column field='containerNo' headerText='Container No.' width='200' textAlign='Center'>
+              </e-column>
+
+              <e-column field='size' headerText='Size' width='120' textAlign='Center'>
+              </e-column>
+
+              <e-column field='sealNo' headerText='Seal NO' width='150' textAlign='Center'>
+              </e-column>
+
+              <e-column field='gw' headerText='GW' width='150' textAlign='Center'>
+              </e-column>
+
+              <e-column field='deliveryTo' headerText='Delivery To' width='200' textAlign='Center'>
+              </e-column>
+
+              <e-column field='deliveryDate' editType='datepickeredit'  type='date' format='MM-dd-yyyy' headerText='Delivery Date' width='200'
+                textAlign='Center'>
+                <!-- <ng-template #editTemplate let-data>
+
+                </ng-template> -->
+              </e-column>
+
+              <e-column field='atn' headerText='ATN' width='150' textAlign='Center'>
+              </e-column>
+
+              <e-column field='deliveryOrder' headerText='Delivery Order' width='200' textAlign='Center'>
+              </e-column>
+          </e-columns>
+        </ejs-grid>
+
+      </div>
+    </div>
+  </div>
+</div>
