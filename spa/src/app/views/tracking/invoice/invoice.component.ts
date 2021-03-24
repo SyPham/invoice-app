@@ -6,6 +6,7 @@ import { AlertifyService } from './../../../shared/_services/alertify.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { GridComponent } from '@syncfusion/ej2-angular-grids';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-invoice',
@@ -36,7 +37,8 @@ export class InvoiceComponent implements OnInit {
     private alertify: AlertifyService,
     private companyService: CompanyService,
     private containerService: ContainerService,
-    private router: Router
+    private router: Router,
+    public translate: TranslateService
   ) { }
 
   ngOnInit() {

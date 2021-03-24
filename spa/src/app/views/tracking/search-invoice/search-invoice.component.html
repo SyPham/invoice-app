@@ -12,7 +12,7 @@
 
         <div class="col-md-3">
           <div class="form-group">
-            <label class="font-weight-bold" for="company">Company</label>
+            <label class="font-weight-bold" for="company">{{'Company' | translate}}</label>
             <ejs-dropdownlist class="pr-3" [dataSource]='companyData' [fields]='fields' [allowFiltering]='true'
               [value]="companyID" (filtering)='onFiltering($event)' (change)='onChange($event)'
               placeholder="Select a company">
@@ -23,7 +23,7 @@
 
         <div class="col-md-3">
           <div class="form-group">
-            <label class="font-weight-bold" for="status">Status</label>
+            <label class="font-weight-bold" for="status">{{'Status' | translate}}</label>
             <ejs-dropdownlist class="pr-3" [dataSource]='statusData' [allowFiltering]='true' [value]="status"
               (change)='onChangeStatus($event)' placeholder="Select a status">
             </ejs-dropdownlist>
@@ -34,10 +34,10 @@
           <div class="row">
             <div class="col-md">
               <div class="form-group">
-                <label class="font-weight-bold" for="Clear"> Option </label>
+                <label class="font-weight-bold" for="Clear">{{'Option' | translate}}  </label>
                 <button (click)='filter()' class="form-control btn btn-primary">
                   <i class="fa fa-search"></i>
-                  Detail
+                  {{'Detail' | translate}}
                 </button>
               </div>
             </div>
@@ -46,7 +46,7 @@
                 <label class="font-weight-bold" for="Clear">  </label>
                 <button (click)='reset()' class="form-control btn btn-primary" style="margin-top: 8px;">
                   <i class="fa fa-times"></i>
-                  Reset
+                  {{'Reset' | translate}}
                 </button>
               </div>
             </div>

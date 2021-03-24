@@ -2,8 +2,20 @@
   "en": "英語",
   "ja": "日本人",
   "zh": "中國人",
+  "Dashboard": "儀表板",
   "Account": "帳戶",
   "Company": "公司",
   "Invoice": "發票",
-  "Container": "容器"
+  "Container": "容器",
+  "Search Invoice": "搜索發票",
+  "Detail": "細節",
+  "Reset": "重置",
+  "Status": "狀態",
+  "Option": "選項",
+  "Logout": "登出",
+  "Company List": "公司名單",
+  "Account List": "帳戶清單",
+  "Container List": "貨櫃清單",
+  "Invoice List": "發票清單",
+  "Add Invoice": "添加發票"
 }

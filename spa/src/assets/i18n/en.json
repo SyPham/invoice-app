@@ -2,8 +2,20 @@
   "en": "English",
   "ja": "Japanese",
   "zh": "Chinese",
+  "Dashboard": "Dashboard",
   "Account": "Account",
   "Company": "Company",
   "Invoice": "Invoice",
-  "Container": "Container"
+  "Container": "Container",
+  "Search Invoice": "Search Invoice",
+  "Detail": "Detail",
+  "Reset": "Reset",
+  "Status": "Status",
+  "Option": "Option",
+  "Logout": "Logout",
+  "Company List": "Company list",
+  "Account List": "Account list",
+  "Container List": "Container List",
+  "Invoice List": "Invoice List",
+  "Add Invoice": "Add Invoice"
 }

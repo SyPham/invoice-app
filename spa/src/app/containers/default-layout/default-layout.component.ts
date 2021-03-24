@@ -21,9 +21,11 @@ export class DefaultLayoutComponent implements OnInit {
     this.authenticationService.account.subscribe(x => this.account = x);
   }
   ngOnInit(): void {
-    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    const lang = localStorage.getItem('lang');
+    if (lang) {
+      this.translate.use(lang);
       this.navItems = navItems.map(items => { this.translates(items); return items; });
-    });
+    }
   }
   translates(item): void {
     if ('name' in item) {
@@ -45,7 +47,6 @@ export class DefaultLayoutComponent implements OnInit {
   switchLang(lang: string) {
     this.translate.use(lang);
     localStorage.setItem('lang', lang);
-    this.navItems = navItems.map(items => { this.translates(items); return items; });
-    console.log(this.navItems);
+    location.reload();
   }
 }

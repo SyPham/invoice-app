@@ -2,8 +2,20 @@
   "en": "英語",
   "ja": "日本語",
   "zh": "中国語",
+  "Dashboard": "ダッシュボード",
   "Account": "アカウント",
   "Company": "会社",
   "Invoice": "請求書",
-  "Container": "コンテナ"
+  "Container": "コンテナ",
+  "Search Invoice": "請求書を検索",
+  "Detail": "詳細",
+  "Reset": "リセット",
+  "Status": "状態",
+  "Option": "オプション",
+  "Logout": "ログアウト",
+  "Company List": "会社リスト",
+  "Account List": "アカウントリスト",
+  "Container List": "コンテナリスト",
+  "Invoice List": "請求書リスト",
+  "Add Invoice": "請求書を追加する"
 }
