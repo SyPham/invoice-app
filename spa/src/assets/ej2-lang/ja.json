@@ -1631,6 +1631,7 @@
         "FilterbarTitle": "\"sフィルターバーセル",
         "EmptyDataSourceError": "列はAutoGenerate Column GridのdataSourceから生成されるため、DataSourceは初期ロード時に空であってはなりません",
         "Add": "追加",
+        "Add invoice": "請求書を追加する",
         "Edit": "編集",
         "Cancel": "キャンセル",
         "Update": "更新",

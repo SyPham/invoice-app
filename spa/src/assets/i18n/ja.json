@@ -17,7 +17,7 @@
   "Account List": "アカウントリスト",
   "Container List": "コンテナリスト",
   "Invoice List": "請求書リスト",
-  "Add Invoice": "請求書を追加する",
+  "Add invoice": "請求書を追加する",
   "Save": "セーブ",
   "Back": "バック",
   "Select the company": "会社を選択してください",
@@ -36,5 +36,9 @@
   "Number of container": "コンテナの数",
   "Enter the number of container": "コンテナ数を入力してください",
   "Select a container": "コンテナを選択してください",
-  "Select a status": "ステータスを選択"
+  "Select a status": "ステータスを選択",
+  "Container details": "コンテナの詳細",
+  "Pending Shipment": "保留中の出荷",
+  "Draft DOE": "ドラフトDOE",
+  "Done": "完了"
 }

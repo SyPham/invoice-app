@@ -1,5 +1,7 @@
+
 export interface AccountSystem {
+  id: number;
   username: string;
-  roleID: number;
+  roleCode: string;
   jwtToken: string;
 }

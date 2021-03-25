@@ -4,6 +4,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { navItems } from '../../_nav';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { AppSidebarComponent } from '@coreui/angular';
+import { Role } from '../../../app/shared/_constants/role';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,6 +22,9 @@ export class DefaultLayoutComponent implements OnInit {
     this.authenticationService.account.subscribe(x => this.account = x);
   }
   ngOnInit(): void {
+    if (this.authenticationService.accountValue.roleCode === Role.MEMBER) {
+      this.navItems = this.navItems.filter(x => x.url.includes('search-invoice'));
+    }
     const lang = localStorage.getItem('lang');
     if (lang) {
       this.translate.use(lang);

@@ -18,7 +18,7 @@ export class InvoiceComponent implements OnInit {
   invoice: any;
   data: any;
   editSettings = { showDeleteConfirmDialog: false, allowEditing: false, allowAdding: false, allowDeleting: true, mode: 'Normal' };
-  toolbarOptions = ['Add Invoice', 'Delete', 'Cancel', 'Search'];
+  toolbarOptions = [{ text: 'Add invoice', id: 'Add invoice' }, 'Delete', 'Cancel', 'Search'];
   @ViewChild('grid') grid: GridComponent;
   pageSettings = { pageCount: 20, pageSizes: true, pageSize: 10 };
   fieldsCompany: object = { text: 'name', value: 'name' };
@@ -39,7 +39,8 @@ export class InvoiceComponent implements OnInit {
     private containerService: ContainerService,
     private router: Router,
     public translate: TranslateService
-  ) { }
+  ) {
+   }
 
   ngOnInit() {
     this.clearForm();
@@ -105,12 +106,12 @@ export class InvoiceComponent implements OnInit {
 
   }
   toolbarClick(args): void {
-    switch (args.item.text) {
+    switch (args.item.id) {
       /* tslint:disable */
       case 'Excel Export':
         this.grid.excelExport();
         break;
-      case 'Add Invoice':
+      case 'Add invoice':
         this.goToAdd();
         break;
       /* tslint:enable */

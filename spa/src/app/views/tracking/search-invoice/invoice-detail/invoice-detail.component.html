@@ -2,15 +2,16 @@
   <div class="row">
     <div class="col-md-12">
       <div class="card">
-        <div class="card-header">
-          <h5 class="card-title">{{'Invoice List' | translate}}</h5>
+        <div class="card-header d-flex">
+          <h5 class="card-title mr-auto" >{{'Invoice List' | translate}}</h5>
+          <button class="btn btn-secondary ml-auto" (click)='back()'>{{'Back' | translate}}</button>
         </div>
 
-        <ejs-grid #grid (actionBegin)="actionBegin($event)" gridLines='Both' (actionComplete)="actionComplete($event)"
+        <ejs-grid #grid  gridLines='Both' 
           [toolbar]='toolbarOptions' [dataSource]='data' allowPaging='true' [allowSorting]='true' allowResizing='true'
           showColumnMenu='true' [allowExcelExport]='true' allowFiltering='true' [filterSettings]='filterSettings'
-          [pageSettings]='pageSettings' (recordDoubleClick)='recordDoubleClick($event)'
-          (toolbarClick)='toolbarClick($event)' [editSettings]='editSettings'>
+          [pageSettings]='pageSettings' (actionFailure)='actionFailure($event)' (recordDoubleClick)='recordDoubleClick($event)'
+          >
           <e-columns>
             <e-column field='id' headerText='#' width='70' textAlign='Center' isPrimaryKey='true'>
               <ng-template #template let-data>
@@ -18,25 +19,25 @@
               </ng-template>
             </e-column>
 
-            <e-column field='invoiceNo' headerText='Invoice No.' width='200' textAlign='Center'>
+            <e-column field='invoiceNo' headerText="{{'Invoice No.' | translate}}" width='200' textAlign='Center'>
             </e-column>
 
-            <e-column field='description' headerText='Description of goods' width='200' textAlign='Center'>
+            <e-column field='description' headerText="{{'Description of goods' | translate}}" width='200' textAlign='Center'>
             </e-column>
 
-            <e-column field='containerNo' headerText='No of container' width='200' textAlign='Center'>
+            <e-column field='containerNo' headerText="{{'Number of container' | translate}}" width='200' textAlign='Center'>
             </e-column>
 
             <e-column field='blno' headerText='BL No.' width='200' textAlign='Center'>
             </e-column>
 
-            <e-column field='vesselName' headerText='Vessel Name' width='200' textAlign='Center'>
+            <e-column field='vesselName' headerText="{{'Vessel name' | translate}}" width='200' textAlign='Center'>
             </e-column>
 
-            <e-column field='carrier' headerText='Carrier' width='200' textAlign='Center'>
+            <e-column field='carrier' headerText="{{'Carrier' | translate}}" width='200' textAlign='Center'>
             </e-column>
 
-            <e-column field='containerCode' headerText='Container' width='200' textAlign='Center'>
+            <e-column field='containerCode' headerText="{{'Container' | translate}}" width='200' textAlign='Center'>
               <ng-template #editTemplate let-data>
                 <ejs-dropdownlist #containerDropdownlist [dataSource]='containerData' [value]="data.containerID"
                   [fields]='fieldsContainer' [allowFiltering]='true' (change)='onChangeContainer($event)'>
@@ -44,7 +45,7 @@
               </ng-template>
             </e-column>
 
-            <e-column field='companyName' headerText='Company' width='200' textAlign='Center'>
+            <e-column field='companyName' headerText="{{'Company' | translate}}" width='200' textAlign='Center'>
               <ng-template #editTemplate let-data>
                 <ejs-dropdownlist #roleDropdownlist [dataSource]='companydata' [value]="data.companyID"
                   [fields]='fieldsCompany' [allowFiltering]='true' (change)='onChangeCompany($event)'>
@@ -52,7 +53,7 @@
               </ng-template>
             </e-column>
 
-            <e-column field='statusCode' headerText='Status' width='200' textAlign='Center'>
+            <e-column field='statusCode' headerText="{{'Status' | translate}}" width='200' textAlign='Center'>
               <ng-template #editTemplate let-data>
                 <ejs-dropdownlist #statusDropdownlist [dataSource]='statusData' [value]="data.statusCode"
                   [allowFiltering]='true' (change)='onChangeStatus($event)'>
@@ -60,33 +61,20 @@
               </ng-template>
             </e-column>
 
-            <e-column field='eta' headerText='ETA' width='200' textAlign='Center'>
+            <e-column field='eta' headerText='ETA' type='date' format='MM-dd-yyyy' width='200' width='200' textAlign='Center'>
             </e-column>
 
-            <e-column field='etd' headerText='ETD' width='200' textAlign='Center'>
+            <e-column field='etd' headerText='ETD' type='date' format='MM-dd-yyyy' width='200' width='200' textAlign='Center'>
             </e-column>
-            <e-column field='other1' headerText='Other 1' width='200' textAlign='Center'>
-            </e-column>
-
-            <e-column field='other2' headerText='Other 2' width='200' textAlign='Center'>
+            <e-column field='other1' headerText="{{'Other 1' | translate}}" width='200' textAlign='Center'>
             </e-column>
 
-            <e-column field='createdBy' [visible]='false' headerText='Created By' width='200' textAlign='Center'>
-              <ng-template #editTemplate let-data></ng-template>
+            <e-column field='other2' headerText="{{'Other 2' | translate}}" width='200' textAlign='Center'>
             </e-column>
-
-            <e-column field='updatedBy' [visible]='false' headerText='Updated By' width='200' textAlign='Center'>
-              <ng-template #editTemplate let-data></ng-template>
-            </e-column>
-
-            <e-column field='updatedTime' [visible]='false' type='date' format='MM-dd-yyyy' headerText='Updated Time'
-              width='200' textAlign='Center'>
-              <ng-template #editTemplate let-data></ng-template>
-            </e-column>
-
-            <e-column field='createdTime' [visible]='false' type='date' format='MM-dd-yyyy HH:mm:ss'
-              headerText='Created Time' width='200' textAlign='Center'>
-              <ng-template #editTemplate let-data></ng-template>
+            <e-column field='option' headerText="{{'Option' | translate}}" width='200' textAlign='Center'>
+              <ng-template #template let-data>
+                <button class="btn btn-primary" (click)='detail(data)'> <i class="cil-pen"></i> {{ 'Detail' | translate}}</button>
+              </ng-template>
             </e-column>
 
           </e-columns>

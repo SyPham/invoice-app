@@ -36,6 +36,10 @@
   "Number of container": "No. of container",
   "Enter the number of container": "Enter the number of container",
   "Select a container": "Select a container",
-  "Select a status": "Select a status"
+  "Select a status": "Select a status",
+  "Container details": "container details",
+  "Pending Shipment": "Pending Shipment",
+  "Draft DOE": "Draft DOE",
+  "Done": "Done"
 
 }

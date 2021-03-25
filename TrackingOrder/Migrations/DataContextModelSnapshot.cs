@@ -109,9 +109,6 @@ namespace TrackingOrder.Migrations
                     b.Property<string>("GW")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("InvoiceID")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("SealNo")
                         .HasColumnType("TEXT");
 
@@ -125,8 +122,6 @@ namespace TrackingOrder.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("InvoiceID");
 
                     b.ToTable("Containers");
                 });
@@ -191,6 +186,8 @@ namespace TrackingOrder.Migrations
                     b.HasKey("ID");
 
                     b.HasIndex("CompanyID");
+
+                    b.HasIndex("ContainerID");
 
                     b.ToTable("Invoices");
                 });
@@ -261,13 +258,6 @@ namespace TrackingOrder.Migrations
                         });
                 });
 
-            modelBuilder.Entity("TrackingOrder.Entities.Container", b =>
-                {
-                    b.HasOne("TrackingOrder.Entities.Invoice", "Invoice")
-                        .WithMany("Containers")
-                        .HasForeignKey("InvoiceID");
-                });
-
             modelBuilder.Entity("TrackingOrder.Entities.Invoice", b =>
                 {
                     b.HasOne("TrackingOrder.Entities.Company", "Company")
@@ -275,6 +265,10 @@ namespace TrackingOrder.Migrations
                         .HasForeignKey("CompanyID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("TrackingOrder.Entities.Container", "Container")
+                        .WithMany()
+                        .HasForeignKey("ContainerID");
                 });
 #pragma warning restore 612, 618
         }

@@ -49,7 +49,8 @@ export class CompanyComponent implements OnInit {
   }
 
   update() {
-    this.companyService.update(this.id, this.company).subscribe(() => {
+    this.company.id = +this.company.id;
+    this.companyService.update(+this.company.id, this.company).subscribe(() => {
       this.alertify.success('Add Action Successfully');
       // this.modalReference.close() ;
       this.getAll();

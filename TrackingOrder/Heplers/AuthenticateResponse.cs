@@ -11,6 +11,7 @@ namespace TrackingOrder.Heplers
     {
         public int Id { get; set; }
         public string Username { get; set; }
+        public string RoleCode { get; set; }
         public string JwtToken { get; set; }
 
         [JsonIgnore] // refresh token is returned in http only cookie
@@ -20,6 +21,7 @@ namespace TrackingOrder.Heplers
         {
             Id = account.ID;
             Username = account.UserName;
+            RoleCode = account.Role.Code;
             JwtToken = jwtToken;
             RefreshToken = refreshToken;
         }

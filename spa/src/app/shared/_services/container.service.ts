@@ -17,8 +17,8 @@ export class ContainerService {
   getAllContainer() {
     return this.http.get(this.baseUrl, {});
   }
-  getContainerByInvoiceId(invoiceId) {
-    return this.http.get(this.baseUrl + invoiceId, {});
+  GetContainerById(containerID) {
+    return this.http.get(this.baseUrl + containerID, {});
   }
   create(model) {
     return this.http.post(this.baseUrl, model);

@@ -1,3 +1,317 @@
-<p>
-  invoice-information works!
-</p>
+ <!-- Draft DOE -->
+ <div class="card mt-3" *ngIf="invoice.statusCode === 'Draft DOE'">
+  <div class="card-header d-flex bg-info">
+    <h6 class="font-weight-bold text-white mr-auto">{{'Draft DOE' | translate}}</h6>
+    <button class="btn btn-secondary ml-auto" (click)='back()'>{{'Back' | translate}}</button>
+  </div>
+
+  <div class="card-body">
+    <div class="row">
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="font-weight-bold" for="No">{{'Invoice No.' | translate}}</label>
+          <input type="text" [(ngModel)]="invoice.invoiceNo" class="e-input" id="No">
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="font-weight-bold" for="Invoice">{{'Invoice date' | translate}}</label>
+          <ejs-datepicker [value]='invoice.invoiceDate' ></ejs-datepicker>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <label class="font-weight-bold" for="description">{{'Description of goods' | translate}}</label>
+          <textarea type="text" class="e-input" [(ngModel)]="invoice.description" id="description"></textarea>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <label class="font-weight-bold" for="containerNo">{{'Number of container' | translate}}</label>
+          <input type="text" class="e-input" [(ngModel)]="invoice.containerNo" id="containerNo">
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+</div>
+
+<!-- End Draft DOE -->
+
+<!-- Pending Shipment -->
+<div class="card mt-3" *ngIf="invoice.statusCode === 'Pending Shipment'">
+  <div class="card-header d-flex bg-warning">
+    <h6 class="font-weight-bold text-black mr-auto">{{'Pending Shipment' | translate}}</h6>
+    <button class="btn btn-secondary ml-auto" (click)='back()'>{{'Back' | translate}}</button>
+  </div>
+  <div class="card-body">
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="font-weight-bold" for="No">{{'Invoice No.' | translate}}</label>
+          <input type="text" [(ngModel)]="invoice.invoiceNo" class="e-input" id="No">
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="font-weight-bold" for="Invoice">{{'Invoice date' | translate}}</label>
+          <ejs-datepicker [value]='invoice.invoiceDate' ></ejs-datepicker>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <label class="font-weight-bold" for="description">{{'Description of goods' | translate}}</label>
+          <textarea type="text" class="e-input" [(ngModel)]="invoice.description" id="description"></textarea>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label class="font-weight-bold" for="ETD">ETD</label>
+          <input type="text" class="e-input" [(ngModel)]="invoice.description" id="ETD">
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label class="font-weight-bold" for="ETA">ETA</label>
+          <input type="text" class="e-input" [(ngModel)]="invoice.description" id="ETA">
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label class="font-weight-bold" for="containerNo">{{'Number of container' | translate}}</label>
+          <input type="text" class="e-input" [(ngModel)]="invoice.containerNo" id="containerNo">
+        </div>
+      </div>
+    </div>
+<div class="row">
+  <div class="col-md-12">
+    <h6 class="card-title font-weight-bold">{{'Container details' | translate}}</h6>
+  </div>
+  <div class="col-md-12">
+    <ejs-grid #grid gridLines='Both' [dataSource]='containerData' [allowSorting]='true'
+      allowResizing='true' showColumnMenu='true' (created)='created()' (dataBound)='dataBound()' allowFiltering='true'
+      [filterSettings]='filterSettings'>
+      <e-columns>
+        <e-column field='id' headerText='#' width='70' textAlign='Center' isPrimaryKey='true'>
+          <ng-template #template let-data>
+            1
+          </ng-template>
+        </e-column>
+
+        <e-column field='containerNo' headerText='Container No.' width='200' textAlign='Center'>
+        </e-column>
+
+        <e-column field='size' headerText='Size' width='120' textAlign='Center'>
+        </e-column>
+
+        <e-column field='sealNo' headerText='Seal NO' width='150' textAlign='Center'>
+        </e-column>
+
+        <e-column field='gw' headerText='GW' width='150' textAlign='Center'>
+        </e-column>
+
+        <e-column field='deliveryTo' headerText='Delivery To' width='200' textAlign='Center'>
+        </e-column>
+
+        <e-column field='deliveryDate' type='date' format='MM-dd-yyyy' headerText='Delivery Date' width='200'
+          textAlign='Center'>
+          <ng-template #editTemplate let-data></ng-template>
+        </e-column>
+
+        <e-column field='atn' headerText='ATN' width='150' textAlign='Center'>
+        </e-column>
+
+        <e-column field='deliveryOrder' headerText='Delivery Order' width='200' textAlign='Center'>
+        </e-column>
+
+        <e-column field='createdBy' [visible]='false' headerText='Created By' width='200' textAlign='Center'>
+          <ng-template #editTemplate let-data></ng-template>
+        </e-column>
+
+        <e-column field='updatedBy' [visible]='false' headerText='Updated By' width='200' textAlign='Center'>
+          <ng-template #editTemplate let-data></ng-template>
+        </e-column>
+
+        <e-column field='updatedTime' [visible]='false' type='date' format='MM-dd-yyyy' headerText='Updated Time'
+          width='200' textAlign='Center'>
+          <ng-template #editTemplate let-data></ng-template>
+        </e-column>
+
+        <e-column field='createdTime' [visible]='false' type='date' format='MM-dd-yyyy HH:mm:ss'
+          headerText='Created Time' width='200' textAlign='Center'>
+          <ng-template #editTemplate let-data></ng-template>
+        </e-column>
+
+      </e-columns>
+    </ejs-grid>
+
+  </div>
+
+</div>
+
+  </div>
+
+</div>
+
+<!-- End Peding shipment -->
+
+  <!-- Done -->
+<div class="card mt-3" *ngIf="invoice.statusCode === 'Done'">
+  <div class="card-header d-flex bg-success">
+    <h6 class="card-title font-weight-bold text-white mr-auto">{{'Done' | translate}}</h6>
+    <button class="btn btn-secondary ml-auto" (click)='back()'>{{'Back' | translate}}</button>
+  </div>
+  <div class="card-body">
+    <div class="row">
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label class="font-weight-bold" for="BL">BL No.</label>
+          <input type="text" [(ngModel)]="invoice.blno" class="e-input" id="BL">
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label class="font-weight-bold" for="carrier">{{'Carrier name' | translate}}</label>
+          <input type="text" [(ngModel)]="invoice.carrier" class="e-input" id="Carrier">
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label class="font-weight-bold" for="Vessel">{{'Vessel name' | translate}}</label>
+          <input type="text" [(ngModel)]="invoice.vesselName" class="e-input" id="Vessel">
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="font-weight-bold" for="No">{{'Invoice number' | translate}}</label>
+          <input type="text" [(ngModel)]="invoice.invoiceNo" class="e-input" id="No">
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="font-weight-bold" for="Invoice">{{'Invoice date' | translate}}</label>
+          <ejs-datepicker [(ngModel)]='invoice.invoiceDate' ></ejs-datepicker>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <label class="font-weight-bold" for="description">{{'Description of goods' | translate}}</label>
+          <textarea type="text" class="e-input" [(ngModel)]="invoice.description" id="description"></textarea>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label class="font-weight-bold" for="ETD">ETD</label>
+          <input type="text" class="e-input" [(ngModel)]="invoice.description" id="ETD">
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label class="font-weight-bold" for="ETA">ETA</label>
+          <input type="text" class="e-input" [(ngModel)]="invoice.description" id="ETA">
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label class="font-weight-bold" for="containerNo">{{'Number of container' | translate}}</label>
+          <input type="text" class="e-input" [(ngModel)]="invoice.containerNo" id="containerNo">
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <h6 class="card-title font-weight-bold">Container detail</h6>
+      </div>
+      <div class="col-md-12">
+        <ejs-grid #grid gridLines='Both' [dataSource]='containerData' [allowSorting]='true'
+          allowResizing='true' showColumnMenu='true' (created)='created()'  (dataBound)='dataBound()' allowFiltering='true'
+          [filterSettings]='filterSettings' [showColumnChooser]='true'>
+          <e-columns>
+            <e-column field='id' headerText='#' width='70' textAlign='Center' isPrimaryKey='true'>
+              <ng-template #template let-data>
+                1
+              </ng-template>
+            </e-column>
+
+            <e-column field='containerNo' headerText='Container No.' width='200' textAlign='Center'>
+            </e-column>
+
+            <e-column field='size' headerText='Size' width='120' textAlign='Center'>
+            </e-column>
+
+            <e-column field='sealNo' headerText='Seal NO' width='150' textAlign='Center'>
+            </e-column>
+
+            <e-column field='gw' headerText='GW' width='150' textAlign='Center'>
+            </e-column>
+
+            <e-column field='deliveryTo' headerText='Delivery To' width='200' textAlign='Center'>
+            </e-column>
+
+            <e-column field='deliveryDate' type='date' format='MM-dd-yyyy' headerText='Delivery Date' width='200'
+              textAlign='Center'>
+              <ng-template #editTemplate let-data></ng-template>
+            </e-column>
+
+            <e-column field='atn' headerText='ATN' width='150' textAlign='Center'>
+            </e-column>
+
+            <e-column field='deliveryOrder' headerText='Delivery Order' width='200' textAlign='Center'>
+            </e-column>
+
+
+
+            <e-column field='createdBy' [visible]='false' headerText='Created By' width='200' textAlign='Center'>
+              <ng-template #editTemplate let-data></ng-template>
+            </e-column>
+
+            <e-column field='updatedBy' [visible]='false' headerText='Updated By' width='200' textAlign='Center'>
+              <ng-template #editTemplate let-data></ng-template>
+            </e-column>
+
+            <e-column field='updatedTime' [visible]='false' type='date' format='MM-dd-yyyy' headerText='Updated Time'
+              width='200' textAlign='Center'>
+              <ng-template #editTemplate let-data></ng-template>
+            </e-column>
+
+            <e-column field='createdTime' [visible]='false' type='date' format='MM-dd-yyyy HH:mm:ss'
+              headerText='Created Time' width='200' textAlign='Center'>
+              <ng-template #editTemplate let-data></ng-template>
+            </e-column>
+
+          </e-columns>
+        </ejs-grid>
+
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- End Done -->

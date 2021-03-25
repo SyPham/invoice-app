@@ -8,6 +8,7 @@ import { FilteringEventArgs, highlightSearch, DropDownListComponent } from '@syn
 import { Query } from '@syncfusion/ej2-data';
 import { GridComponent } from '@syncfusion/ej2-angular-grids';
 import { Router } from '@angular/router';
+import { AlertifyService } from './../../../shared/_services/alertify.service';
 
 @Component({
   selector: 'app-search-invoice',
@@ -17,7 +18,7 @@ import { Router } from '@angular/router';
 export class SearchInvoiceComponent implements OnInit {
   companyData;
   fields = { text: 'name', value: 'name' };
-  statusData = ['Draft DOE', 'Pending Shipment', 'Done'];
+  statusData = ['All', 'Draft DOE', 'Pending Shipment', 'Done'];
   status: any;
   invoice: Invoice = {} as Invoice;
   containerData: Object;
@@ -25,28 +26,29 @@ export class SearchInvoiceComponent implements OnInit {
   pageSettings = { pageCount: 20, pageSizes: true, pageSize: 10 };
   @ViewChild('grid') grid: GridComponent;
   invoiceNo;
-  companyID;
+  companyID = 0;
   isShow = false;
   invoiceData: any;
   constructor(
     private companyService: CompanyService,
     private containerService: ContainerService,
     private invoiceService: InvoiceService,
+    private alertify: AlertifyService,
     private router: Router,
 
   ) { }
 
   ngOnInit() {
     this.loadCompany();
-    this.getContainerByInvoiceId();
+    // this.GetContainerById();
   }
   dataBound() {
     this.grid.autoFitColumns();
   }
   // api
-  getContainerByInvoiceId() {
-    if (this.invoice?.id !== undefined) {
-      this.containerService.getContainerByInvoiceId(this.invoice.id).subscribe(res => {
+  getContainerById() {
+    if (this.invoice?.containerID !== undefined) {
+      this.containerService.GetContainerById(this.invoice.containerID).subscribe(res => {
         this.containerData = res;
       });
     }
@@ -54,7 +56,7 @@ export class SearchInvoiceComponent implements OnInit {
   reset() {
     this.isShow = false;
     this.status = '';
-    this.companyID = 0;
+    this.companyID = null;
     this.invoiceNo = '';
     this.invoice = {} as Invoice;
   }
@@ -64,6 +66,7 @@ export class SearchInvoiceComponent implements OnInit {
       this.invoiceService.filter(this.invoiceNo, this.companyID, this.status).subscribe(res => {
         this.invoiceData = res;
         this.invoice = this.invoiceData.length > 0 ? this.invoiceData[0] : {} as Invoice;
+        this.getContainerById();
       });
     }
   }
@@ -93,6 +96,14 @@ export class SearchInvoiceComponent implements OnInit {
     return (this.grid.pageSettings.currentPage - 1) * this.pageSettings.pageSize + Number(index) + 1;
   }
   goToDetail() {
-    this.router.navigate([`/tracking/search-invoice/detail/${this.companyID}/${this.status}`]);
+    if (this.companyID === 0) {
+      this.alertify.error('Please select the company!');
+    } else {
+      if (this.status === 'All')
+      {
+        this.status = '';
+      }
+      this.router.navigate([`/tracking/search-invoice/detail/${this.companyID || 0}/${this.status || ''}`]);
+    }
   }
 }

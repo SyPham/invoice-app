@@ -1631,6 +1631,7 @@
         "FilterbarTitle": "的濾網",
         "EmptyDataSourceError": "初始加載時，DataSource不能為空，因為列是從AutoGenerate Column Grid中的dataSource生成的",
         "Add": "加",
+        "Add invoice": "添加發票",
         "Edit": "編輯",
         "Cancel": "取消",
         "Update": "更新資料",

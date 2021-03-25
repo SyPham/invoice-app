@@ -31,25 +31,15 @@ namespace TrackingOrder.Controllers
         public async Task<ActionResult> Get()
         {
             var data = await _context.Containers.OrderByDescending(x => x.CreatedTime).ToListAsync();
-
-         
             return Ok(data);
         }
 
-        [HttpGet("GetContainerByInvoiceId/{invoiceId}")]
-        public async Task<ActionResult> GetContainerByInvoiceId(int invoiceId)
+        [HttpGet("{containerId}")]
+        public async Task<ActionResult> Get(int containerId)
         {
-            var data = await _context.Containers.Where(x=> x.InvoiceID == invoiceId).OrderByDescending(x => x.CreatedTime).ToListAsync();
+            var data = await _context.Containers.Where(x=> x.ID == containerId).OrderByDescending(x => x.CreatedTime).ToListAsync();
             return Ok(data);
         }
-
-        // GET api/<ContainersController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
         // POST api/<ContainersController>
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] Container model)

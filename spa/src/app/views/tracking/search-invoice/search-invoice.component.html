@@ -91,28 +91,28 @@
 
         <div class="col-md-6">
           <div class="form-group">
-            <label class="font-weight-bold" for="No">Invoice No.</label>
+            <label class="font-weight-bold" for="No">{{'Invoice No.' | translate}}</label>
             <input type="text" [(ngModel)]="invoice.invoiceNo" class="e-input" id="No">
           </div>
         </div>
 
         <div class="col-md-6">
           <div class="form-group">
-            <label class="font-weight-bold" for="Invoice">Invoice Date</label>
+            <label class="font-weight-bold" for="Invoice">{{'Invoice date' | translate}}</label>
             <ejs-datepicker [value]='invoice.invoiceDate' ></ejs-datepicker>
           </div>
         </div>
 
         <div class="col-md-12">
           <div class="form-group">
-            <label class="font-weight-bold" for="description">Description of goods</label>
+            <label class="font-weight-bold" for="description">{{'Description of goods' | translate}}</label>
             <textarea type="text" class="e-input" [(ngModel)]="invoice.description" id="description"></textarea>
           </div>
         </div>
 
         <div class="col-md-12">
           <div class="form-group">
-            <label class="font-weight-bold" for="containerNo">No. of container</label>
+            <label class="font-weight-bold" for="containerNo">{{'Number of container' | translate}}</label>
             <input type="text" class="e-input" [(ngModel)]="invoice.containerNo" id="containerNo">
           </div>
         </div>
@@ -135,21 +135,21 @@
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
-            <label class="font-weight-bold" for="No">Invoice No.</label>
+            <label class="font-weight-bold" for="No">{{'Invoice No.' | translate}}</label>
             <input type="text" [(ngModel)]="invoice.invoiceNo" class="e-input" id="No">
           </div>
         </div>
 
         <div class="col-md-6">
           <div class="form-group">
-            <label class="font-weight-bold" for="Invoice">Invoice Date</label>
+            <label class="font-weight-bold" for="Invoice">{{'Invoice date' | translate}}</label>
             <ejs-datepicker [value]='invoice.invoiceDate' ></ejs-datepicker>
           </div>
         </div>
 
         <div class="col-md-12">
           <div class="form-group">
-            <label class="font-weight-bold" for="description">Description of goods</label>
+            <label class="font-weight-bold" for="description">{{'Description of goods' | translate}}</label>
             <textarea type="text" class="e-input" [(ngModel)]="invoice.description" id="description"></textarea>
           </div>
         </div>
@@ -170,23 +170,23 @@
 
         <div class="col-md-4">
           <div class="form-group">
-            <label class="font-weight-bold" for="containerNo">No. of container</label>
+            <label class="font-weight-bold" for="containerNo">{{'Number of container' | translate}}</label>
             <input type="text" class="e-input" [(ngModel)]="invoice.containerNo" id="containerNo">
           </div>
         </div>
       </div>
   <div class="row">
     <div class="col-md-12">
-      <h6 class="card-title font-weight-bold">Container detail</h6>
+      <h6 class="card-title font-weight-bold">{{'Container details' | translate}}</h6>
     </div>
     <div class="col-md-12">
-      <ejs-grid #grid gridLines='Both' [dataSource]='containerData' allowPaging='true' [allowSorting]='true'
+      <ejs-grid #grid gridLines='Both' [dataSource]='containerData' [allowSorting]='true'
         allowResizing='true' showColumnMenu='true' (dataBound)='dataBound()' allowFiltering='true'
-        [filterSettings]='filterSettings' [pageSettings]='pageSettings' [showColumnChooser]='true'>
+        [filterSettings]='filterSettings' [showColumnChooser]='true'>
         <e-columns>
           <e-column field='id' headerText='#' width='70' textAlign='Center' isPrimaryKey='true'>
             <ng-template #template let-data>
-              {{NO(data.index)}}
+              1
             </ng-template>
           </e-column>
 
@@ -264,35 +264,35 @@
 
         <div class="col-md-4">
           <div class="form-group">
-            <label class="font-weight-bold" for="carrier">Carrier Name</label>
+            <label class="font-weight-bold" for="carrier">{{'Carrier name' | translate}}</label>
             <input type="text" [(ngModel)]="invoice.carrier" class="e-input" id="Carrier">
           </div>
         </div>
 
         <div class="col-md-4">
           <div class="form-group">
-            <label class="font-weight-bold" for="Vessel">Vessel Name</label>
+            <label class="font-weight-bold" for="Vessel">{{'Vessel name' | translate}}</label>
             <input type="text" [(ngModel)]="invoice.vesselName" class="e-input" id="Vessel">
           </div>
         </div>
 
         <div class="col-md-6">
           <div class="form-group">
-            <label class="font-weight-bold" for="No">Invoice No.</label>
+            <label class="font-weight-bold" for="No">{{'Invoice number' | translate}}</label>
             <input type="text" [(ngModel)]="invoice.invoiceNo" class="e-input" id="No">
           </div>
         </div>
 
         <div class="col-md-6">
           <div class="form-group">
-            <label class="font-weight-bold" for="Invoice">Invoice Date</label>
+            <label class="font-weight-bold" for="Invoice">{{'Invoice date' | translate}}</label>
             <ejs-datepicker [(ngModel)]='invoice.invoiceDate' ></ejs-datepicker>
           </div>
         </div>
 
         <div class="col-md-12">
           <div class="form-group">
-            <label class="font-weight-bold" for="description">Description of goods</label>
+            <label class="font-weight-bold" for="description">{{'Description of goods' | translate}}</label>
             <textarea type="text" class="e-input" [(ngModel)]="invoice.description" id="description"></textarea>
           </div>
         </div>
@@ -313,7 +313,7 @@
 
         <div class="col-md-4">
           <div class="form-group">
-            <label class="font-weight-bold" for="containerNo">No. of container</label>
+            <label class="font-weight-bold" for="containerNo">{{'Number of container' | translate}}</label>
             <input type="text" class="e-input" [(ngModel)]="invoice.containerNo" id="containerNo">
           </div>
         </div>
@@ -326,13 +326,13 @@
           <h6 class="card-title font-weight-bold">Container detail</h6>
         </div>
         <div class="col-md-12">
-          <ejs-grid #grid gridLines='Both' [dataSource]='containerData' allowPaging='true' [allowSorting]='true'
+          <ejs-grid #grid gridLines='Both' [dataSource]='containerData' [allowSorting]='true'
             allowResizing='true' showColumnMenu='true' (dataBound)='dataBound()' allowFiltering='true'
-            [filterSettings]='filterSettings' [pageSettings]='pageSettings' [showColumnChooser]='true'>
+            [filterSettings]='filterSettings' [showColumnChooser]='true'>
             <e-columns>
               <e-column field='id' headerText='#' width='70' textAlign='Center' isPrimaryKey='true'>
                 <ng-template #template let-data>
-                  {{NO(data.index)}}
+                  1
                 </ng-template>
               </e-column>
 

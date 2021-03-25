@@ -21,10 +21,6 @@ namespace TrackingOrder.Entities
         public string ATN { get; set; }
         public string DeliveryOrder { get; set; }
 
-        public int? InvoiceID { get; set; }
-        [JsonIgnore]
-        public virtual Invoice Invoice { get; set; }
-
         public DateTime CreatedTime { get; set; }
         public DateTime? UpdatedTime { get; set; }
         public int CreatedBy { get; set; }

@@ -25,7 +25,7 @@ namespace TrackingOrder.Entities
         public string BLNO { get; set; }
         public int CompanyID { get; set; }
         public virtual Company Company { get; set; }
-        public ICollection<Container> Containers { get; set; }
+        public virtual Container Container { get; set; }
 
         public DateTime? ETA { get; set; }
         public DateTime? ETD { get; set; }

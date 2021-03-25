@@ -68,44 +68,25 @@ namespace TrackingOrder.Controllers
         [HttpGet("{invoiceId}")]
         public async Task<ActionResult> Get(int invoiceId)
         {
-           
+
 
             var data = await _context.Invoices.FirstOrDefaultAsync(x => x.ID == invoiceId);
             return Ok(data);
         }
 
         [HttpGet("filter")]
-        public async Task<ActionResult> Filter(string invoiceNo, int companyID, string status )
+        public async Task<ActionResult> Filter(string invoiceNo ="", int? companyID = 0, string status = "" )
         {
-
-            var data = _context.Invoices;
+            var data = _context.Invoices.Include(x=>x.Container);
             var result = new List<Invoice>();
-            if (invoiceNo != string.Empty || invoiceNo != null)
+            if (companyID > 0 && status == "" )
             {
+                result = await data.Where(x => x.CompanyID == companyID ).ToListAsync();
+            } else if (companyID > 0 && status != "" ) {
+                result = await data.Where(x => x.CompanyID == companyID && x.StatusCode.Equals(status)).ToListAsync();
+            }
+            else {
                 result = await data.Where(x => x.InvoiceNo.Equals(invoiceNo)).ToListAsync();
-            }
-            if (invoiceNo != string.Empty || invoiceNo != null && companyID > 0)
-            {
-                result = await data.Where(x => x.InvoiceNo.Equals(invoiceNo) || x.CompanyID == companyID).ToListAsync();
-            }
-
-            if ((invoiceNo != string.Empty || invoiceNo != null) && companyID > 0 && (status != string.Empty || status != null))
-            {
-                result = await data.Where(x => x.InvoiceNo.Equals(invoiceNo) && x.CompanyID == companyID && x.StatusCode == status).ToListAsync();
-            }
-            if ((invoiceNo == string.Empty || invoiceNo == null) && companyID > 0 && (status == string.Empty || status == null))
-            {
-                result = await data.Where(x => x.CompanyID == companyID).ToListAsync();
-            }
-
-            if ((invoiceNo != string.Empty || invoiceNo != null) && companyID == 0 && (status == string.Empty || status == null))
-            {
-                result = await data.Where(x => x.InvoiceNo.Equals(invoiceNo)).ToListAsync();
-            }
-
-            if ((invoiceNo == string.Empty || invoiceNo == null) && companyID == 0 && (status != string.Empty || status != null))
-            {
-                result = await data.Where(x => x.StatusCode.Equals(status)).ToListAsync();
             }
             return Ok(result);
         }

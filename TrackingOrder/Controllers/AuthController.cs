@@ -146,7 +146,7 @@ namespace TrackingOrder.Controllers
 
         private AuthenticateResponse RefreshToken(string token, string ipAddress)
         {
-            var user = _context.Accounts.SingleOrDefault(u => u.RefreshTokens.Any(t => t.Token == token));
+            var user = _context.Accounts.Include(x => x.Role).Include(x => x.RefreshTokens).SingleOrDefault(u => u.RefreshTokens.Any(t => t.Token == token));
 
             // return null if no user found with token
             if (user == null) return null;
@@ -172,7 +172,7 @@ namespace TrackingOrder.Controllers
         }
         async Task<AuthenticateResponse> Authenticate(AuthenticateRequest model, string ipAddress)
         {
-            var userFromRepo = await _context.Accounts.Where(x => x.UserName.Equals(model.Username)).FirstOrDefaultAsync();
+            var userFromRepo = await _context.Accounts.Where(x => x.UserName.Equals(model.Username)).Include(x=>x.Role).FirstOrDefaultAsync();
             if (userFromRepo == null)
                 return null;
 
@@ -195,7 +195,7 @@ namespace TrackingOrder.Controllers
         }
         private bool RevokeToken(string token, string ipAddress)
         {
-            var user = _context.Accounts.SingleOrDefault(u => u.RefreshTokens.Any(t => t.Token == token));
+            var user = _context.Accounts.Include(x => x.Role).Include(x => x.RefreshTokens).SingleOrDefault(u => u.RefreshTokens.Any(t => t.Token == token));
 
             // return false if no user found with token
             if (user == null) return false;

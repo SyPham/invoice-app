@@ -17,7 +17,7 @@
   "Account List": "帳戶清單",
   "Container List": "貨櫃清單",
   "Invoice List": "發票清單",
-  "Add Invoice": "添加發票",
+  "Add invoice": "添加發票",
   "Save": "救",
   "Back": "後退",
   "Select the company": "選擇公司",
@@ -36,5 +36,9 @@
   "Number of container": "貨櫃數量",
   "Enter the number of container": "輸入貨櫃號碼",
   "Select a container": "選擇一個容器",
-  "Select a status": "選擇州"
+  "Select a status": "選擇州",
+  "Container details": "容器詳細信息",
+  "Pending Shipment": "待決的",
+  "Draft DOE": "草稿 DOE",
+  "Done": "完全的"
 }

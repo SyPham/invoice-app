@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TrackingOrder.Migrations
 {
-    public partial class InitialDb : Migration
+    public partial class InititalDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -22,6 +22,30 @@ namespace TrackingOrder.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Companies", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Containers",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ContainerNo = table.Column<string>(nullable: true),
+                    Size = table.Column<string>(nullable: true),
+                    SealNo = table.Column<string>(nullable: true),
+                    DeliveryTo = table.Column<string>(nullable: true),
+                    DeliveryDate = table.Column<DateTime>(nullable: true),
+                    GW = table.Column<string>(nullable: true),
+                    ATN = table.Column<string>(nullable: true),
+                    DeliveryOrder = table.Column<string>(nullable: true),
+                    CreatedTime = table.Column<DateTime>(nullable: false),
+                    UpdatedTime = table.Column<DateTime>(nullable: true),
+                    CreatedBy = table.Column<int>(nullable: false),
+                    UpdatedBy = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Containers", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -71,6 +95,12 @@ namespace TrackingOrder.Migrations
                         principalTable: "Companies",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Invoices_Containers_ContainerID",
+                        column: x => x.ContainerID,
+                        principalTable: "Containers",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -97,37 +127,6 @@ namespace TrackingOrder.Migrations
                         principalTable: "Roles",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Containers",
-                columns: table => new
-                {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    ContainerNo = table.Column<string>(nullable: true),
-                    Size = table.Column<string>(nullable: true),
-                    SealNo = table.Column<string>(nullable: true),
-                    DeliveryTo = table.Column<string>(nullable: true),
-                    DeliveryDate = table.Column<DateTime>(nullable: true),
-                    GW = table.Column<string>(nullable: true),
-                    ATN = table.Column<string>(nullable: true),
-                    DeliveryOrder = table.Column<string>(nullable: true),
-                    InvoiceID = table.Column<int>(nullable: true),
-                    CreatedTime = table.Column<DateTime>(nullable: false),
-                    UpdatedTime = table.Column<DateTime>(nullable: true),
-                    CreatedBy = table.Column<int>(nullable: false),
-                    UpdatedBy = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Containers", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_Containers_Invoices_InvoiceID",
-                        column: x => x.InvoiceID,
-                        principalTable: "Invoices",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -162,14 +161,14 @@ namespace TrackingOrder.Migrations
                 column: "RoleID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Containers_InvoiceID",
-                table: "Containers",
-                column: "InvoiceID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Invoices_CompanyID",
                 table: "Invoices",
                 column: "CompanyID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Invoices_ContainerID",
+                table: "Invoices",
+                column: "ContainerID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_RefreshTokens_AccountID",
@@ -180,19 +179,19 @@ namespace TrackingOrder.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Containers");
+                name: "Invoices");
 
             migrationBuilder.DropTable(
                 name: "RefreshTokens");
 
             migrationBuilder.DropTable(
-                name: "Invoices");
+                name: "Companies");
+
+            migrationBuilder.DropTable(
+                name: "Containers");
 
             migrationBuilder.DropTable(
                 name: "Accounts");
-
-            migrationBuilder.DropTable(
-                name: "Companies");
 
             migrationBuilder.DropTable(
                 name: "Roles");
