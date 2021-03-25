@@ -11,11 +11,37 @@
         </div>
 
         <div class="col-md-3">
+          <div class="row">
+            <div class="col-md">
+              <div class="form-group">
+                <label class="font-weight-bold" for="Clear">{{'Option' | translate}}  </label>
+                <button (click)='filter()' class="form-control btn btn-primary">
+                  <i class="fa fa-search"></i>
+                  {{'Detail' | translate}}
+                </button>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="form-group">
+                <label class="font-weight-bold" for="Clear">  </label>
+                <button (click)='reset()' class="form-control btn btn-primary" style="margin-top: 8px;">
+                  <i class="fa fa-times"></i>
+                  {{'Reset' | translate}}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+        <div class="row">
+
+        <div class="col-md-3">
           <div class="form-group">
             <label class="font-weight-bold" for="company">{{'Company' | translate}}</label>
             <ejs-dropdownlist class="pr-3" [dataSource]='companyData' [fields]='fields' [allowFiltering]='true'
               [value]="companyID" (filtering)='onFiltering($event)' (change)='onChange($event)'
-              placeholder="Select a company">
+              placeholder="{{'Select the company' | translate}}">
             </ejs-dropdownlist>
           </div>
 
@@ -25,7 +51,7 @@
           <div class="form-group">
             <label class="font-weight-bold" for="status">{{'Status' | translate}}</label>
             <ejs-dropdownlist class="pr-3" [dataSource]='statusData' [allowFiltering]='true' [value]="status"
-              (change)='onChangeStatus($event)' placeholder="Select a status">
+              (change)='onChangeStatus($event)' placeholder="{{'Select a status' | translate}}">
             </ejs-dropdownlist>
           </div>
         </div>
@@ -35,7 +61,7 @@
             <div class="col-md">
               <div class="form-group">
                 <label class="font-weight-bold" for="Clear">{{'Option' | translate}}  </label>
-                <button (click)='filter()' class="form-control btn btn-primary">
+                <button (click)='goToDetail()' class="form-control btn btn-primary">
                   <i class="fa fa-search"></i>
                   {{'Detail' | translate}}
                 </button>

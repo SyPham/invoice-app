@@ -17,5 +17,25 @@
   "Account List": "Account list",
   "Container List": "Container List",
   "Invoice List": "Invoice List",
-  "Add Invoice": "Add Invoice"
+  "Add invoice": "Add invoice",
+  "Save": "Save",
+  "Back": "Back",
+  "Select the company": "Select the company",
+  "Carrier name": "Carrier Name",
+  "Vessel name": "Vessel Name",
+  "Invoice No.": "Invoice No.",
+  "Enter the invoice number.": "Enter the invoice number",
+  "Invoice date": "Invoice Date",
+  "Chooes the invoice date": "Chooes the invoice date",
+  "Description of goods": "Description of goods",
+  "Enter description of goods": "Enter description of goods",
+  "Other 1": "Other 1",
+  "Enter the other 1": "Enter the other 1",
+  "Other 2": "Other 2",
+  "Enter the other 2": "Enter the other 2",
+  "Number of container": "No. of container",
+  "Enter the number of container": "Enter the number of container",
+  "Select a container": "Select a container",
+  "Select a status": "Select a status"
+
 }

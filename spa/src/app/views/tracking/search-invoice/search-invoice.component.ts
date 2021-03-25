@@ -7,6 +7,7 @@ import { EmitType } from '@syncfusion/ej2-base';
 import { FilteringEventArgs, highlightSearch, DropDownListComponent } from '@syncfusion/ej2-angular-dropdowns';
 import { Query } from '@syncfusion/ej2-data';
 import { GridComponent } from '@syncfusion/ej2-angular-grids';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-invoice',
@@ -31,6 +32,7 @@ export class SearchInvoiceComponent implements OnInit {
     private companyService: CompanyService,
     private containerService: ContainerService,
     private invoiceService: InvoiceService,
+    private router: Router,
 
   ) { }
 
@@ -89,5 +91,8 @@ export class SearchInvoiceComponent implements OnInit {
   }
   NO(index) {
     return (this.grid.pageSettings.currentPage - 1) * this.pageSettings.pageSize + Number(index) + 1;
+  }
+  goToDetail() {
+    this.router.navigate([`/tracking/search-invoice/detail/${this.companyID}/${this.status}`]);
   }
 }

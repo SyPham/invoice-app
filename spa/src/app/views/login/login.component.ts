@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   ) {
     // redirect to home if already logged in
     if (this.authenticationService.accountValue) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/tracking/search-invoice']);
     }
   }
 
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     });
 
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/tracking/search-invoice';
   }
 
   // convenience getter for easy access to form fields

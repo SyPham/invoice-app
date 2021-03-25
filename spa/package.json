@@ -19,8 +19,8 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
+    "start": "ng serve --open --host 10.4.4.224 --port 2000",
     "postinstall": "ngcc --properties es2015 browser module main --first-only",
-    "start": "ng serve",
     "build2": "ng build --prod --base-href https://github.com/SyPham/invoice",
     "build": "ng build --prod --aot --build-optimizer --common-chunk --vendor-chunk --optimization --progress",
     "test": "ng test",
@@ -50,6 +50,7 @@
     "@syncfusion/ej2-angular-calendars": "^18.4.48",
     "@syncfusion/ej2-angular-dropdowns": "^18.4.49",
     "@syncfusion/ej2-angular-grids": "^18.4.49",
+    "cldr-data": "^36.0.0",
     "alertifyjs": "^1.13.1",
     "bootstrap": "^4.6.0",
     "chart.js": "^2.9.4",

@@ -1,15 +1,15 @@
 import { INavData } from '@coreui/angular';
 
 export const navItems: INavData[] = [
-  {
-    name: 'Dashboard',
-    url: '/dashboard',
-    icon: 'icon-speedometer',
-    badge: {
-      variant: 'info',
-      text: 'NEW'
-    }
-  },
+  // {
+  //   name: 'Dashboard',
+  //   url: '/dashboard',
+  //   icon: 'icon-speedometer',
+  //   badge: {
+  //     variant: 'info',
+  //     text: 'NEW'
+  //   }
+  // },
   // {
   //   title: true,
   //   name: 'Theme'
@@ -266,11 +266,11 @@ export const navItems: INavData[] = [
   {
     name: 'Container',
     url: '/tracking/container',
-    icon: 'cil-notes',
+    icon: 'cil-boat-alt',
   },
   {
     name: 'Search Invoice',
     url: '/tracking/search-invoice',
-    icon: 'cil-notes',
+    icon: 'cil-search',
   },
 ];

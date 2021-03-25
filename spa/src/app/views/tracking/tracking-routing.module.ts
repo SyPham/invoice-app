@@ -4,6 +4,7 @@ import { AccountComponent } from './account/account.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CompanyComponent } from './company/company.component';
+import { InvoiceDetailComponent } from './search-invoice/invoice-detail/invoice-detail.component';
 
 const routes: Routes = [
   {
@@ -39,10 +40,22 @@ const routes: Routes = [
       },
       {
         path: 'search-invoice',
-        component: SearchInvoiceComponent,
         data: {
           title: 'Search Invoice'
-        }
+        },
+        children: [
+          {
+            path: '',
+            component: SearchInvoiceComponent
+          },
+           {
+            path: 'detail/:company/:status',
+             data: {
+               title: 'Detail'
+             },
+             component: InvoiceDetailComponent
+          }
+        ]
       },
     ]
   }

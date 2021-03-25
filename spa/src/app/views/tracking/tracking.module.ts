@@ -1,3 +1,4 @@
+import { InvoiceInformationComponent } from './search-invoice/invoice-information/invoice-information.component';
 import { ContainerComponent } from './container/container.component';
 import { AccountComponent } from './account/account.component';
 import { CompanyComponent } from './company/company.component';
@@ -18,18 +19,26 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { L10n, setCulture, loadCldr,  } from '@syncfusion/ej2-base';
 declare var require: any;
+
 loadCldr(
   require('cldr-data/supplemental/numberingSystems.json'),
   require('cldr-data/main/en/ca-gregorian.json'),
   require('cldr-data/main/en/numbers.json'),
   require('cldr-data/main/en/timeZoneNames.json'),
-  require('cldr-data/supplemental/weekdata.json')); // To load the culture based first day of week 
+  require('cldr-data/supplemental/weekdata.json')); // To load the culture based first day of week
 
 loadCldr(
   require('cldr-data/supplemental/numberingSystems.json'),
-  require('cldr-data/main/vi/ca-gregorian.json'),
-  require('cldr-data/main/vi/numbers.json'),
-  require('cldr-data/main/vi/timeZoneNames.json'),
+  require('cldr-data/main/ja/ca-gregorian.json'),
+  require('cldr-data/main/ja/numbers.json'),
+  require('cldr-data/main/ja/timeZoneNames.json'),
+  require('cldr-data/supplemental/weekdata.json')); // To load the culture based first day of week
+
+  loadCldr(
+  require('cldr-data/supplemental/numberingSystems.json'),
+  require('cldr-data/main/zh/ca-gregorian.json'),
+  require('cldr-data/main/zh/numbers.json'),
+  require('cldr-data/main/zh/timeZoneNames.json'),
   require('cldr-data/supplemental/weekdata.json')); // To load the culture based first day of week
 
 @NgModule({
@@ -54,7 +63,8 @@ loadCldr(
     AccountComponent,
     ContainerComponent,
     SearchInvoiceComponent,
-    InvoiceDetailComponent
+    InvoiceDetailComponent,
+    InvoiceInformationComponent
   ]
 })
 export class TrackingModule {
